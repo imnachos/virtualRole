@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Campaign Home</h1>
+
+  <p>Welcome to <em>Campaign</em></p>
+
+<h2>Records</h2>
+
+  <p>The campaign has the following record count:</p>
+  <ul>
+    <li><strong>Actors:</strong> {{ countActors }}</li>
+    <li><strong>Classes:</strong> {{ countHeroClasses }}</li>
+  </ul>
+
+{% endblock %}
