@@ -103,6 +103,6 @@ ENV/
 .idea/pythogram.iml
 .idea/workspace.xml
 .idea/virtualRole.iml
-django/db.sqlite3
+db.sqlite3
 *.bat
-django/main/migrations/*
+main/migrations/*

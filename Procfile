@@ -1,1 +1,1 @@
-web: gunicorn virtualrole.wsgi --log-file -
+web: gunicorn virtualrole.wsgi
