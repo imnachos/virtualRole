@@ -1,1 +1,1 @@
-web: gunicorn app:virtualrole
+web: gunicorn app:main
