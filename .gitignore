@@ -105,4 +105,3 @@ ENV/
 .idea/virtualRole.iml
 db.sqlite3
 *.bat
-main/migrations/*
