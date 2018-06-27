@@ -108,7 +108,7 @@ django_heroku.settings(locals())
 in_heroku = False
 if 'DATABASE_URL' in os.environ:
     in_heroku = True
-    
+
 if in_heroku:
     DATABASES = {'default': dj_database_url.config()}
 else:
