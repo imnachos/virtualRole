@@ -36,6 +36,7 @@ class Actor(models.Model):
     height = models.IntegerField(blank=True)
     race = models.ForeignKey(Race, on_delete=models.SET_NULL, blank=False, null=True)
     heroClass = models.ForeignKey(HeroClass, on_delete=models.SET_NULL, blank=True, null=True)
+    level = models.IntegerField(blank=False, null=False, default=1)
 
     class Meta:
         ordering = ["-name"]
