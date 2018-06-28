@@ -3,11 +3,40 @@
 {% block content %}
   <h1>{{ actor.name }} {{ actor.surname }}</h1>
 
-    <p><strong>Name:</strong> <a href="">{{ actor.name }}</a></p>
-    <p><strong>Surname:</strong> {{ actor.surname }}</p>
-    <p><strong>Race:</strong> <a href="">{{ actor.race.name }}</a></p>
-    <p><strong>Class:</strong> <a href="">{{ actor.heroClass.name }}</a></p>
-    <p><strong>Age:</strong> {{ actor.age }}</p>
-    <p><strong>Height:</strong> {{ actor.height }}</p>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/actor_detail.css' %}">
+
+<table width="70%">
+<tr style="table_color_1">
+    <th>Name:</th>
+    <td>{{ actor.name }}</td>
+</tr>
+<tr style="table_color_2">
+    <th>Surname:</th>
+    <td>{{ actor.surname }}</td>
+</tr>
+<tr style="table_color_1">
+    <th>Age:</th>
+    <td>{{ actor.age }}</td>
+</tr>
+    <tr style="table_color_2">
+        <th>Height:</th>
+        <td>{{ actor.height }}</td>
+    </tr>
+<tr style="table_color_1">
+    <th>Race:</th>
+  <td><a href="">{{ actor.race.name }}</a></td>
+</tr>
+<tr style="table_color_2">
+    <th>Class:</th>
+  <td><a href="">{{ actor.heroClass.name }}</a></td>
+</tr>
+<tr style="table_color_2">
+    <th>Level:</th>
+  <td><a href="">{{ actor.level }}</a></td>
+</tr>
+
+</table>
+
 
 {% endblock %}
