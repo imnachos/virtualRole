@@ -8,7 +8,7 @@
 
       {% for actor in object_list %}
       <li>
-        <a href="{{ actor.get_absolute_url }}">{{ actor.name }} {{ actor.surname }}</a> ({{actor.heroClass.name}})
+        <a href="{{ actor.get_absolute_url }}">{{ actor.name }} {{ actor.surname }}</a>
       </li>
       {% endfor %}
 
