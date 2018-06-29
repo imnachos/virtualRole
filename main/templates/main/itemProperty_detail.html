@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ itemProperty.name }} </h1>
+  <h1>{{ itemproperty.name }} </h1>
 
-    <p><strong>Name:</strong> <a href="">{{ itemProperty.name }}</a></p>
-    <p><strong>Description:</strong> <a href="">{{ itemProperty.description }}</a></p>
+    <p><strong>Name: </strong>{{ itemproperty.name }}</p>
+    <p><strong>Value: </strong>{{ itemproperty.value }}</p>
+    <p><strong>Description: </strong>{{ itemproperty.description }}</p>
 {% endblock %}

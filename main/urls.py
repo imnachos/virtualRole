@@ -22,9 +22,9 @@ urlpatterns = [
     path('events/', views.EventListView.as_view(), name='events'),
     path('events/<int:pk>', views.EventDetailView.as_view(), name='event-detail'),
 
-    path('items/', views.HeroClassListView.as_view(), name='items'),
-    path('items/<int:pk>', views.HeroClassDetailView.as_view(), name='item-detail'),
+    path('items/', views.ItemListView.as_view(), name='items'),
+    path('items/<int:pk>', views.ItemDetailView.as_view(), name='item-detail'),
 
-    path('itemProperty/', views.HeroClassListView.as_view(), name='itemProperties'),
-    path('itemProperties/<int:pk>', views.HeroClassDetailView.as_view(), name='itemProperty-detail'),
+    path('itemProperty/', views.ItemPropertyListView.as_view(), name='itemProperties'),
+    path('itemProperties/<int:pk>', views.ItemPropertyDetailView.as_view(), name='itemProperty-detail'),
 ]

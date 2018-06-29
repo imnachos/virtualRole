@@ -3,10 +3,11 @@
 {% block content %}
   <h1>{{ item.name }} </h1>
 
-    <p><strong>Name:</strong> <a href="">{{ item.name }}</a></p>
-    <p><strong>Description:</strong> <a href="">{{ item.description }}</a></p>
-    <p><strong>Properties:</strong></p>
-    {% for property in item.properties %}
-        <p>{{ property.name }}: {{ property.value }}</a></p>
+    <p><strong>Name: </strong>{{ item.name }}</p>
+    <p><strong>Description: </strong>{{ item.description }}</p>
+    <p><strong>Properties: </strong></p>
+    {% for property in item.properties.all %}
+        <p><a href="{% url 'itemProperties' %} {{ property.id}} "><strong>{{ property.name }}: </strong></a>{{ property.value }}</p>
+
     {% endfor %}
 {% endblock %}
