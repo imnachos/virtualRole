@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ item.name }} </h1>
+
+    <p><strong>Name:</strong> <a href="">{{ item.name }}</a></p>
+    <p><strong>Description:</strong> <a href="">{{ item.description }}</a></p>
+    <p><strong>Properties:</strong></p>
+    {% for property in item.properties %}
+        <p>{{ property.name }}: {{ property.value }}</a></p>
+    {% endfor %}
+{% endblock %}

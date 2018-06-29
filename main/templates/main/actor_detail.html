@@ -28,13 +28,14 @@
   <td><a href="">{{ actor.race.name }}</a></td>
 </tr>
 <tr style="table_color_2">
-    <th>Class:</th>
-  <td><a href="">{{ actor.heroClass.name }}</a></td>
+    <th>Classes:</th>
+  <td>
+      {% for classProgress in heroClasses %}
+        Level {{ classProgress.level }}  <a href='heroClasses/<int:pk>'>{{ classProgress.heroClass.name }}</a>
+      {% endfor %}
+  </td>
 </tr>
-<tr style="table_color_2">
-    <th>Level:</th>
-  <td><a href="">{{ actor.level }}</a></td>
-</tr>
+
 
 </table>
 

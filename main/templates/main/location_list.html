@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Locations:</h1>
+
+    {% if object_list %}
+    <ul>
+
+      {% for location in object_list %}
+      <li>
+        <a href="{{ location.get_absolute_url }}">{{ location.name }} </a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no locations in the campaign.</p>
+    {% endif %}
+{% endblock %}

@@ -21,10 +21,15 @@
       <div class="col-sm-2">
       {% block sidebar %}
       <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'actors' %}">All Actors</a></li>
-         <li><a href="{% url 'races' %}">All Races</a></li>
-          <li><a href="{% url 'heroClasses' %}">All Classes</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'actors' %}">Actors</a></li>
+          <li><a href="{% url 'races' %}">Races</a></li>
+          <li><a href="{% url 'heroClasses' %}">Classes</a></li>
+          <li><a href="{% url 'locations' %}">Locations</a></li>
+          <li><a href="{% url 'locationTypes' %}">Location types</a></li>
+          <li><a href="{% url 'events' %}">Events</a></li>
+          <li><a href="{% url 'items' %}">Items</a></li>
+          <li><a href="{% url 'itemProperties' %}">Item properties</a></li>
       </ul>
      {% endblock %}
       </div>

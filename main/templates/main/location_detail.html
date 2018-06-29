@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ location.name }} </h1>
+
+    <p><strong>Name:</strong> <a href="">{{ location.name }}</a></p>
+    <p><strong>Description:</strong> <a href="">{{ location.description }}</a></p>
+    <p><strong>Type:</strong> <a href="{{ location.locationType.get_absolute_url }}">{{ location.locationType.name }}</a></p>
+    <p><strong>Locations:</strong></p>
+    {% for subLocation in location.locations %}
+        <p><a href='locations/<int:pk>'>{{ sublocation.name }}</a></p>
+    {% endfor %}
+{% endblock %}
