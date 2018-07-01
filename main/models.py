@@ -1,5 +1,25 @@
 from django.db import models
 from django.urls import reverse
+import uuid
+from django.contrib.auth.models import User
+
+
+class Campaign(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=False, null=True)
+    name = models.TextField(max_length=20, blank=False, null=False)
+    description = models.TextField(blank=True, null=True)
+    creation = models.TimeField(auto_now_add=True, blank=False)
+
+    class Meta:
+        ordering = ["-name"]
+
+    def get_absolute_url(self):
+        return reverse('campaign-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return self.name
 
 
 class Race(models.Model):
