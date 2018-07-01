@@ -3,7 +3,10 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='home'),
+
+    url('^$', views.index, name='home'),
+    path('portal/', views.portal, name='portal'),
+
     path('actor/', views.ActorListView.as_view(), name='actors'),
     path('actor/<int:pk>', views.ActorDetailView.as_view(), name='actor-detail'),
 
