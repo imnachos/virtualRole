@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import HeroClass, Actor, Race, Item, ItemProperty, Location, LocationType, Event
+from .models import HeroClass, Actor, Race, Item, ItemProperty, Location, LocationType, Event, Group, GroupType
 from django.views import generic
 
 
@@ -96,3 +96,21 @@ class EventListView(generic.ListView):
 
 class EventDetailView(generic.DetailView):
     model = Event
+
+
+# Group
+
+class GroupTypeListView(generic.ListView):
+    model = GroupType
+
+
+class GroupTypeDetailView(generic.DetailView):
+    model = GroupType
+
+
+class GroupListView(generic.ListView):
+    model = Group
+
+
+class GroupDetailView(generic.DetailView):
+    model = Group
