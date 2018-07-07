@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
 
-    url('^$', views.index, name='home'),
+    url(r'^$', views.index, name='home'),
     path('portal/', views.portal, name='portal'),
 
     path('actor/', views.ActorListView.as_view(), name='actors'),

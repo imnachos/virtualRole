@@ -24,25 +24,12 @@
 
     {% if user.is_authenticated %}
 
-
-       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-
-        <script>
-        function openNav() {
-            document.getElementById("sidebar").style.width = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("sidebar").style.width = "0";
-        }
-        </script>
-
         <div class="row">
           <div class="col-sm-2">
           {% block sidebar %}
               <div id="sidebar" class="sidenav">
                   <ul class="sidebar-nav">
-                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
                       <li><a href="{% url 'home' %}">Home</a></li>
                       <li><a href="{% url 'campaigns' %}">Campaigns</a></li>
                       <li><a href="{% url 'quests' %}">Quests </a></li>

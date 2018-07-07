@@ -4,7 +4,7 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 0;
+    width: 200;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -16,9 +16,9 @@ body {
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 10px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     color: #000000;
     display: block;
     transition: 0.3s;
@@ -42,12 +42,11 @@ body {
 }
 
 .topnav {
-    background-color: #333;
+    background-color: #333333;
     overflow: hidden;
     float: right;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
     float: right;
     color: #f2f2f2;
@@ -57,13 +56,12 @@ body {
     font-size: 17px;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
     color: black;
 }
 
-/* Add a color to the active/current link */
+
 .topnav a.active {
     background-color: #4CAF50;
     color: white;

@@ -5,11 +5,14 @@ from django.views import generic
 
 
 def index(request):
+    context = {}
+
+    context['campaigns'] = Campaign.objects.filter(owner=request.user).order_by('name')
 
     return render(
         request,
         'index.html',
-        context={},
+        context,
     )
 
 
@@ -20,7 +23,6 @@ def portal(request):
         'portal.html',
         context={},
     )
-
 
 # Campaign
 
