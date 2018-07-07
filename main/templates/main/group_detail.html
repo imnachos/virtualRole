@@ -9,7 +9,7 @@
     <p><strong>Members:</strong></p>
       {% for member in group.members.all %}
         <li>
-         <p><a href="{% url 'actors' %} {{ member.id}} ">{{ member.name }}</a></p>
+         <p><a href="{% url 'actors' %} {{ member.id}} ">{{ member.name }} {{ member.surname }}</a></p>
         </li>
       {% endfor %}
 

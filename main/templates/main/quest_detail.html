@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ quest.name }} </h1>
+
+    <p><strong>Name: </strong>{{ quest.name }}</p>
+    <p><strong>Description: </strong>{{ quest.description }}</p>
+
+    <p><strong>Givers:</strong></p>
+      {% for giver in quest.givers.all %}
+        <li>
+         <p><a href=" {% url 'actors' %} {{ giver.id}} ">{{ giver.name }} {{ giver.surname }}</a></p>
+        </li>
+      {% endfor %}
+
+    <p><strong>Participants:</strong></p>
+      {% for participant in quest.participants.all %}
+        <li>
+         <p><a href=" {% url 'actors' %} {{ participant.id}} ">{{ participant.name }} {{ participant.surname }}</a></p>
+        </li>
+      {% endfor %}
+
+    <p><strong>Events:</strong></p>
+      {% for event in quest.events.all %}
+        <li>
+         <p><a href=" {% url 'events' %} {{ event.id}} ">{{ event.name }}</a></p>
+        </li>
+      {% endfor %}
+
+    <p><strong>Pre-requisites:</strong></p>
+      {% for quest in quest.requisites.all %}
+        <li>
+         <p><a href=" {% url 'quests' %} {{ quest.id}} ">{{ quest.name }}</a></p>
+        </li>
+      {% endfor %}
+
+    <p><strong>Rewards:</strong></p>
+      {% for reward in quest.reward.all %}
+        <li>
+         <p><a href=" {% url 'items' %} {{ item.id}} ">{{ reward.name }}</a></p>
+        </li>
+      {% endfor %}
+
+    <p><strong>Locations:</strong></p>
+      {% for location in quest.locations.all %}
+        <li>
+         <p><a href=" {% url 'locations' %} {{ location.id}} ">{{ location.name }}</a></p>
+        </li>
+      {% endfor %}
+
+{% endblock %}

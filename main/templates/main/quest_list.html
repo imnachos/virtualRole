@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Races:</h1>
+    <h1>Quests:</h1>
 
     {% if object_list %}
     <ul>
 
-      {% for race in object_list %}
+      {% for quest in object_list %}
       <li>
-        <a href="{{ race.get_absolute_url }}">{{ race.name }} </a>
+        <a href="{{ quest.get_absolute_url }}">{{ quest.name }} </a>
       </li>
       {% endfor %}
 
     </ul>
     {% else %}
-      <p>There are no Races in the campaign.</p>
+      <p>There are no quests in the campaign.</p>
     {% endif %}
-
 {% endblock %}
