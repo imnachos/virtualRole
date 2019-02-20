@@ -21,7 +21,6 @@ The easy an recommended way is to create a .bat file in the root folder with the
 ```
 echo on
 set SECRET_KEY=SOME_SUPER_SECRET_KEY
-%cd%
 py manage.py runserver
 pause
 ```

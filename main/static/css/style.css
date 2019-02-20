@@ -66,3 +66,7 @@ body {
     background-color: #4CAF50;
     color: white;
 }
+
+h1 {
+    text-transform: capitalize;
+}
