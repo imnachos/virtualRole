@@ -7,10 +7,5 @@
     <p><strong>Group type: </strong><a href="{% url 'groupTypes' %} {{ group.type.id}} ">{{ group.type.name }}</a></p>
     <p><strong>Description: </strong>{{ group.description }}</p>
     <p><strong>Members:</strong></p>
-      {% for member in group.members.all %}
-        <li>
-         <p><a href="{% url 'actors' %} {{ member.id}} ">{{ member.name }}</a></p>
-        </li>
-      {% endfor %}
 
 {% endblock %}

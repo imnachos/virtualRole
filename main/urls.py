@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
 
-    url('^$', views.index, name='home'),
+    url(r'^$', views.index, name='home'),
     path('portal/', views.portal, name='portal'),
 
     path('actor/', views.ActorListView.as_view(), name='actors'),
@@ -20,7 +20,7 @@ urlpatterns = [
     path('location/<int:pk>', views.LocationDetailView.as_view(), name='location-detail'),
 
     path('locationType/', views.LocationTypeListView.as_view(), name='locationTypes'),
-    path('locationType/<int:pk>', views.LocationDetailView.as_view(), name='locationType-detail'),
+    path('locationType/<int:pk>', views.LocationTypeDetailView.as_view(), name='locationType-detail'),
 
     path('event/', views.EventListView.as_view(), name='events'),
     path('event/<int:pk>', views.EventDetailView.as_view(), name='event-detail'),
@@ -36,4 +36,10 @@ urlpatterns = [
 
     path('groupType/', views.GroupTypeListView.as_view(), name='groupTypes'),
     path('groupType/<int:pk>', views.GroupTypeDetailView.as_view(), name='groupType-detail'),
+
+    path('campaign/', views.CampaignListView.as_view(), name='campaigns'),
+    path('campaign/<uuid:pk>', views.CampaignDetailView.as_view(), name='campaign-detail'),
+
+    path('quest/', views.QuestListView.as_view(), name='quests'),
+    path('quest/<int:pk>', views.QuestDetailView.as_view(), name='quest-detail'),
 ]

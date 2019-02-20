@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import HeroClass, Actor, Race, Event, Location, LocationType, Item, ItemProperty, ClassProgress, Group, GroupType
+from .models import HeroClass, Actor, Race, Event, Location, LocationType, Item, ItemProperty, ClassProgress, Group, GroupType, Campaign, Quest
+
+admin.site.register(Campaign)
 
 admin.site.register(HeroClass)
 
@@ -19,6 +21,8 @@ admin.site.register(ItemProperty)
 
 admin.site.register(Group)
 admin.site.register(GroupType)
+
+admin.site.register(Quest)
 
 
 

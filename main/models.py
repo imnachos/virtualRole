@@ -26,6 +26,8 @@ class Race(models.Model):
     name = models.TextField(max_length=20, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
 
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     class Meta:
         ordering = ["-name"]
 
@@ -39,6 +41,8 @@ class Race(models.Model):
 class HeroClass(models.Model):
     name = models.TextField(max_length=20, blank=False)
     description = models.TextField(blank=True, null=True)
+
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -67,6 +71,8 @@ class Actor(models.Model):
     race = models.ForeignKey(Race, on_delete=models.SET_NULL, blank=False, null=True)
     heroClasses = models.ManyToManyField(ClassProgress, symmetrical=False, blank=False)
 
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     class Meta:
         ordering = ["-name"]
 
@@ -80,6 +86,8 @@ class Actor(models.Model):
 class GroupType(models.Model):
     name = models.TextField(max_length=50, blank=False, unique=True)
     description = models.TextField(blank=True)
+
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -97,6 +105,8 @@ class Group(models.Model):
     type = models.ForeignKey(GroupType, on_delete=models.SET_NULL, blank=False, null=True)
     members = models.ManyToManyField(Actor, symmetrical=False)
 
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     class Meta:
         ordering = ["-name"]
 
@@ -110,6 +120,8 @@ class Group(models.Model):
 class LocationType(models.Model):
     name = models.TextField(max_length=20, blank=False, null=False, unique=True)
     description = models.TextField(blank=True, null=True)
+
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -126,6 +138,8 @@ class Location(models.Model):
     description = models.TextField(blank=True)
     type = models.ForeignKey(LocationType, on_delete=models.SET_NULL, blank=False, null=True)
     locations = models.ManyToManyField("self", symmetrical=False, blank=True)
+
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -145,6 +159,8 @@ class Event(models.Model):
     actors = models.ManyToManyField(Actor, symmetrical=False, blank=True)
     date = models.TimeField(blank=True, null=True)
 
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     class Meta:
         ordering = ["-name"]
 
@@ -158,6 +174,8 @@ class Event(models.Model):
 class ItemProperty(models.Model):
     name = models.TextField(max_length=50, blank=False, unique=True)
     description = models.TextField(blank=True)
+
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -175,6 +193,8 @@ class Item(models.Model):
     properties = models.ManyToManyField(ItemProperty, symmetrical=False)
     value = models.TextField(blank=False, null=True)
 
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     class Meta:
         ordering = ["-name"]
 
@@ -185,4 +205,25 @@ class Item(models.Model):
         return self.name
 
 
+class Quest(models.Model):
+    name = models.TextField(blank=False, null=False, unique=True)
+    description = models.TextField(blank=True, null=True)
+
+    givers = models.ManyToManyField(Actor, symmetrical=False, related_name='givers', blank=True)
+    participants = models.ManyToManyField(Actor, symmetrical=False, related_name='participants', blank=True)
+    events = models.ManyToManyField(Event, symmetrical=False, blank=True)
+    requisites = models.ManyToManyField("self", symmetrical=False, blank=True)
+    reward = models.ManyToManyField(Item, symmetrical=False, blank=True)
+    locations = models.ManyToManyField(Location, symmetrical=False, blank=True)
+
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
+    class Meta:
+        ordering = ["-name"]
+
+    def get_absolute_url(self):
+        return reverse('quest-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return self.name
 

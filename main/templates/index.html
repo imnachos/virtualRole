@@ -3,6 +3,15 @@
 {% block content %}
 <h1>Campaign Home</h1>
 
-  <p>Welcome to <em>Campaign</em></p>
+
+    <form action="campaign_chooser" method="post">
+      <select class="form-control" id="selectedCampaign" name="campaign" required>
+          {% for campaign in campaigns %}
+          <option>{{campaign.name}}</option>
+          {% endfor %}
+      </select>
+        <input type="submit" value="Select">
+    </form>
+
 
 {% endblock %}
