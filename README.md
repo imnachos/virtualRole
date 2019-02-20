@@ -11,7 +11,7 @@ py manage.py makemigrations
 ```
 
 ```
-py mana```.py migrate
+py manage.py migrate
 ```
 
 ```
