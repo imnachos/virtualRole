@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from django.urls import path, include
+from django.urls import path
+
 from . import views
 
 urlpatterns = [
@@ -16,8 +17,8 @@ urlpatterns = [
     path('event/', views.EventListView.as_view(), name='events'),
     path('event/<int:pk>', views.EventDetailView.as_view(), name='event-detail'),
 
-    path('item/', views.ObjectListView.as_view(), name='objects'),
-    path('item/<int:pk>', views.ObjectDetailView.as_view(), name='object-detail'),
+    path('object/', views.ObjectListView.as_view(), name='objects'),
+    path('object/<int:pk>', views.ObjectDetailView.as_view(), name='object-detail'),
 
     path('group/', views.GroupListView.as_view(), name='groups'),
     path('group/<int:pk>', views.GroupDetailView.as_view(), name='group-detail'),

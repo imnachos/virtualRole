@@ -24,11 +24,14 @@ class Campaign(models.Model):
 
 class Actor(models.Model):
     name = models.TextField(max_length=20, blank=False)
+    description = models.TextField(blank=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     surname = models.TextField(max_length=20, blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
 
-    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+    characterClass = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -43,9 +46,9 @@ class Actor(models.Model):
 class Group(models.Model):
     name = models.TextField(max_length=50, blank=False)
     description = models.TextField(blank=True)
-    members = models.ManyToManyField(Actor, symmetrical=False)
-
     campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
+    members = models.ManyToManyField(Actor, symmetrical=False)
 
     class Meta:
         ordering = ["-name"]
@@ -60,9 +63,9 @@ class Group(models.Model):
 class Location(models.Model):
     name = models.TextField(max_length=50, blank=False)
     description = models.TextField(blank=True)
-    locations = models.ManyToManyField("self", symmetrical=False, blank=True)
-
     campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
+    locations = models.ManyToManyField("self", symmetrical=False, blank=True)
 
     class Meta:
         ordering = ["-name"]
@@ -77,12 +80,12 @@ class Location(models.Model):
 class Event(models.Model):
     name = models.TextField(max_length=50, blank=False)
     description = models.TextField(blank=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=False, null=True)
     groups = models.ManyToManyField(Group, symmetrical=False, blank=True)
     actors = models.ManyToManyField(Actor, symmetrical=False, blank=True)
     date = models.TimeField(blank=True, null=True)
-
-    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -97,14 +100,15 @@ class Event(models.Model):
 class Object(models.Model):
     name = models.TextField(max_length=50, blank=False)
     description = models.TextField(blank=True)
-    currentOwner = models.ForeignKey(Actor, on_delete=models.SET_NULL, blank=False, null=True)
     campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+
+    currentOwner = models.ForeignKey(Actor, on_delete=models.SET_NULL, blank=False, null=True)
 
     class Meta:
         ordering = ["-name"]
 
     def get_absolute_url(self):
-        return reverse('item-detail', args=[str(self.id)])
+        return reverse('object-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
@@ -113,12 +117,12 @@ class Object(models.Model):
 class Quest(models.Model):
     name = models.TextField(blank=False, null=False, unique=True)
     description = models.TextField(blank=True, null=True)
+    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
 
     givers = models.ManyToManyField(Actor, symmetrical=False, related_name='givers', blank=True)
     participants = models.ManyToManyField(Actor, symmetrical=False, related_name='participants', blank=True)
     events = models.ManyToManyField(Event, symmetrical=False, blank=True)
-
-    campaign = models.ForeignKey(Campaign, on_delete=models.SET_NULL, blank=False, null=True)
+    locations = models.ManyToManyField(Location, symmetrical=False, blank=True)
 
     class Meta:
         ordering = ["-name"]

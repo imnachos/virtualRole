@@ -27,19 +27,6 @@
         </li>
       {% endfor %}
 
-    <p><strong>Pre-requisites:</strong></p>
-      {% for quest in quest.requisites.all %}
-        <li>
-         <p><a href=" {% url 'quests' %} {{ quest.id}} ">{{ quest.name }}</a></p>
-        </li>
-      {% endfor %}
-
-    <p><strong>Rewards:</strong></p>
-      {% for reward in quest.reward.all %}
-        <li>
-         <p><a href=" {% url 'items' %} {{ item.id}} ">{{ reward.name }}</a></p>
-        </li>
-      {% endfor %}
 
     <p><strong>Locations:</strong></p>
       {% for location in quest.locations.all %}

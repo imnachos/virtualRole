@@ -60,7 +60,7 @@ class LocationDetailView(generic.DetailView):
     model = Location
 
 
-# Items
+# Objects
 
 
 class ObjectListView(generic.ListView):
