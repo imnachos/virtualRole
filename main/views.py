@@ -1,28 +1,24 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import HeroClass, Actor, Race, Item, ItemProperty, Location, LocationType, Event, Group, GroupType, Campaign, Quest
 from django.views import generic
+
+from .models import Actor, Object, Location, Event, Group, Campaign, Quest
 
 
 def index(request):
-    context = {}
-
-    context['campaigns'] = Campaign.objects.filter(owner=request.user).order_by('name')
-
     return render(
         request,
         'index.html',
-        context,
+        context={},
     )
 
 
 def portal(request):
-
     return render(
         request,
         'portal.html',
         context={},
     )
+
 
 # Campaign
 
@@ -51,44 +47,7 @@ class ActorDetailView(generic.DetailView):
     model = Actor
 
 
-# Class
-
-class HeroClassListView(generic.ListView):
-    model = HeroClass
-
-    def get_queryset(self):
-        return HeroClass.objects.filter(campaign__owner=self.request.user).order_by('name')
-
-
-class HeroClassDetailView(generic.DetailView):
-    model = HeroClass
-
-
-# Race
-
-class RaceListView(generic.ListView):
-    model = Race
-
-    def get_queryset(self):
-        return Race.objects.filter(campaign__owner=self.request.user).order_by('name')
-
-
-class RaceDetailView(generic.DetailView):
-    model = Race
-
-
 # Location
-
-class LocationTypeListView(generic.ListView):
-    model = LocationType
-
-    def get_queryset(self):
-        return LocationType.objects.filter(campaign__owner=self.request.user).order_by('name')
-
-
-class LocationTypeDetailView(generic.DetailView):
-    model = LocationType
-
 
 class LocationListView(generic.ListView):
     model = Location
@@ -103,26 +62,16 @@ class LocationDetailView(generic.DetailView):
 
 # Items
 
-class ItemPropertyListView(generic.ListView):
-    model = ItemProperty
+
+class ObjectListView(generic.ListView):
+    model = Object
 
     def get_queryset(self):
-        return ItemProperty.objects.filter(campaign__owner=self.request.user).order_by('name')
+        return Object.objects.filter(campaign__owner=self.request.user).order_by('name')
 
 
-class ItemPropertyDetailView(generic.DetailView):
-    model = ItemProperty
-
-
-class ItemListView(generic.ListView):
-    model = Item
-
-    def get_queryset(self):
-        return Item.objects.filter(campaign__owner=self.request.user).order_by('name')
-
-
-class ItemDetailView(generic.DetailView):
-    model = Item
+class ObjectDetailView(generic.DetailView):
+    model = Object
 
 
 # Event
@@ -139,17 +88,6 @@ class EventDetailView(generic.DetailView):
 
 
 # Group
-
-class GroupTypeListView(generic.ListView):
-    model = GroupType
-
-    def get_queryset(self):
-        return GroupType.objects.filter(campaign__owner=self.request.user).order_by('name')
-
-
-class GroupTypeDetailView(generic.DetailView):
-    model = GroupType
-
 
 class GroupListView(generic.ListView):
     model = Group

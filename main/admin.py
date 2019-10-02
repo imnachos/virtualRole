@@ -1,28 +1,17 @@
 from django.contrib import admin
-from .models import HeroClass, Actor, Race, Event, Location, LocationType, Item, ItemProperty, ClassProgress, Group, GroupType, Campaign, Quest
+
+from .models import Actor, Event, Location, Object, Group, Campaign, Quest
 
 admin.site.register(Campaign)
-
-admin.site.register(HeroClass)
-
-admin.site.register(ClassProgress)
-
-admin.site.register(Race)
 
 admin.site.register(Actor)
 
 admin.site.register(Event)
 
 admin.site.register(Location)
-admin.site.register(LocationType)
 
-admin.site.register(Item)
-admin.site.register(ItemProperty)
+admin.site.register(Object)
 
 admin.site.register(Group)
-admin.site.register(GroupType)
 
 admin.site.register(Quest)
-
-
-
