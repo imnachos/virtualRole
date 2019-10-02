@@ -6,10 +6,5 @@
     <p><strong>Name: </strong>{{ group.name }}</p>
     <p><strong>Description: </strong>{{ group.description }}</p>
     <p><strong>Members:</strong></p>
-      {% for member in group.members.all %}
-        <li>
-         <p><a href="{% url 'actors' %} {{ member.id}} ">{{ member.name }} {{ member.surname }}</a></p>
-        </li>
-      {% endfor %}
 
 {% endblock %}
