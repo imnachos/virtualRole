@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.views import generic
 
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+from main.forms import ActorEditForm
+
 from .models import Actor, Object, Location, Event, Group, Campaign, Quest
 
 
@@ -45,6 +51,32 @@ class ActorListView(generic.ListView):
 
 class ActorDetailView(generic.DetailView):
     model = Actor
+
+
+def actor_edit_view(request, pk):
+    actor_instance = get_object_or_404(Actor, pk=pk)
+
+    if request.method == 'POST':
+
+        form = ActorEditForm(request.POST)
+
+        if form.is_valid():
+            actor_instance.name = form.cleaned_data['name']
+            actor_instance.surname = form.cleaned_data['surname']
+            actor_instance.description = form.cleaned_data['description']
+            actor_instance.save()
+
+            return HttpResponseRedirect(reverse('actors'))
+
+    else:
+        form = ActorEditForm(initial={'name': actor_instance.name, "surname" : actor_instance.surname, "description" : actor_instance.description})
+
+    context = {
+        'form': form,
+        'actor_instance': actor_instance,
+    }
+
+    return render(request, 'main/actor_edit.html', context)
 
 
 # Location

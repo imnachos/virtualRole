@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('actor/', views.ActorListView.as_view(), name='actors'),
     path('actor/<int:pk>', views.ActorDetailView.as_view(), name='actor-detail'),
+    path('actor/<int:pk>/edit', views.actor_edit_view, name='actor-edit'),
 
     path('location/', views.LocationListView.as_view(), name='locations'),
     path('location/<int:pk>', views.LocationDetailView.as_view(), name='location-detail'),

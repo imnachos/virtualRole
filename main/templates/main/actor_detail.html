@@ -1,40 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ actor.name }} {{ actor.surname }}</h1>
+<h1>{{ actor.name }} {{ actor.surname }}</h1>
 
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/actor_detail.css' %}">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/actor_detail.css' %}">
 
 <table width="70%">
-<tr style="table_color_1">
-    <th>Name:</th>
-    <td>{{ actor.name }}</td>
-</tr>
-<tr style="table_color_2">
-    <th>Surname:</th>
-    <td>{{ actor.surname }}</td>
-</tr>
-<tr style="table_color_1">
-    <th>Age:</th>
-    <td>{{ actor.age }}</td>
-</tr>
+    <tr style="table_color_1">
+        <th>Name:</th>
+        <td>{{ actor.name }}</td>
+    </tr>
+    <tr style="table_color_2">
+        <th>Surname:</th>
+        <td>{{ actor.surname }}</td>
+    </tr>
+    <tr style="table_color_2">
+        <th>Description:</th>
+        <td>{{ actor.description }}</td>
+    </tr>
+
+    <tr style="table_color_1">
+        <th>Age:</th>
+        <td>{{ actor.age }}</td>
+    </tr>
     <tr style="table_color_2">
         <th>Height:</th>
         <td>{{ actor.height }}</td>
     </tr>
-<tr style="table_color_1">
-    <th>Race:</th>
-  <td><a href="">{{ actor.race.name }}</a></td>
-</tr>
-<tr style="table_color_2">
-    <th>Classes:</th>
-  <td>
-      {% for classProgress in heroClasses %}
-        Level {{ classProgress.level }}  <a href='heroClasses/<int:pk>'>{{ classProgress.heroClass.name }}</a>
-      {% endfor %}
-  </td>
-</tr>
+
 
 
 </table>

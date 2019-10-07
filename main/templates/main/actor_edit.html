@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ actor.name }} {{ actor.surname }}</h1>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/actor_detail.css' %}">
+
+<table width="70%">
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form>
+
+</table>
+
+
+{% endblock %}

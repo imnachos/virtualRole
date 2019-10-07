@@ -3,6 +3,7 @@ import uuid
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils.timezone import deactivate
 
 
 class Campaign(models.Model):
@@ -31,7 +32,8 @@ class Actor(models.Model):
     age = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
 
-    characterClass = models.TextField(blank=True, null=True)
+    profession = models.TextField(blank=True, null=True)
+    race = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ["-name"]
@@ -41,6 +43,11 @@ class Actor(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def create(cls, name, surname, description):
+        actor = cls(name=name, surname=surname, description=description)
+        return actor
 
 
 class Group(models.Model):

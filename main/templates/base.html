@@ -26,6 +26,15 @@
             <div id="sidebar" class="sidenav">
                 <ul class="sidebar-nav">
 
+                    <form action="campaign_chooser" method="post">
+                        <select class="form-control" id="selectedCampaign" name="campaign" required>
+                            {% for campaign in campaigns %}
+                            <option>{{campaign.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Select">
+                    </form>
+
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'campaigns' %}">Campaigns</a></li>
                     <li><a href="{% url 'quests' %}">Quests </a></li>
